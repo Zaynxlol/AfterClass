@@ -57,13 +57,16 @@ const modules = [
 export default function Dashboard() {
   return (
     <div>
-      <h1 className="text-3xl font-bold tracking-tight font-headline mb-6">
-        Welcome back, Student!
-      </h1>
+      <div className="mb-6 bg-card p-6 rounded-lg border">
+        <h1 className="text-2xl font-bold tracking-tight font-headline">
+          Welcome back, Student!
+        </h1>
+        <p className="text-muted-foreground">Here's your dashboard overview. Ready to dive in?</p>
+      </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {modules.map((mod) => (
           <Link href={mod.href} key={mod.title}>
-            <Card className="h-full hover:bg-muted/50 transition-colors">
+            <Card className="h-full hover:bg-muted/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
               <CardHeader>
                 <div className="text-primary mb-4">{mod.icon}</div>
                 <CardTitle className="font-headline">{mod.title}</CardTitle>
