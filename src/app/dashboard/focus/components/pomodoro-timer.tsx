@@ -16,6 +16,10 @@ export function PomodoroTimer() {
   const [isBreak, setIsBreak] = useState(false);
   const { toast } = useToast();
 
+  const totalDuration = (isBreak ? BREAK_MINS : WORK_MINS) * 60;
+  const timeRemaining = minutes * 60 + seconds;
+  const progress = ((totalDuration - timeRemaining) / totalDuration) * 100;
+
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
     if (isActive) {
@@ -57,29 +61,43 @@ export function PomodoroTimer() {
 
   const time = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   
-  // Update document title
   useEffect(() => {
     document.title = `${time} - ${isBreak ? 'Break' : 'Focus'} | AfterClassAI`;
   }, [time, isBreak]);
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-md glassmorphism-dark">
       <CardContent className="p-8">
-        <div className={`mx-auto mb-6 flex h-48 w-48 items-center justify-center rounded-full border-8 ${isBreak ? 'border-accent' : 'border-primary'}`}>
+        <div className="relative mx-auto mb-8 flex h-64 w-64 items-center justify-center">
+            <svg className="absolute inset-0" viewBox="0 0 100 100">
+                <circle className="stroke-current text-muted/20" strokeWidth="4" cx="50" cy="50" r="45" fill="transparent" />
+                <circle
+                    className={`stroke-current ${isBreak ? 'text-secondary' : 'text-primary'} transition-all duration-1000 ease-linear`}
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    fill="transparent"
+                    strokeDasharray={2 * Math.PI * 45}
+                    strokeDashoffset={2 * Math.PI * 45 * (1 - progress / 100)}
+                    transform="rotate(-90 50 50)"
+                />
+            </svg>
             <h2 className="text-6xl font-bold font-mono">{time}</h2>
         </div>
         <div className="flex justify-center gap-4">
-          <Button onClick={toggleTimer} size="lg">
+          <Button onClick={toggleTimer} size="lg" className="w-32">
             {isActive ? <Pause className="w-6 h-6 mr-2" /> : <Play className="w-6 h-6 mr-2" />}
             {isActive ? "Pause" : "Start"}
           </Button>
-          <Button onClick={() => resetTimer(isBreak)} variant="outline" size="lg">
+          <Button onClick={() => resetTimer(isBreak)} variant="outline" size="lg" className="w-32">
             <RotateCcw className="w-6 h-6 mr-2" />
             Reset
           </Button>
         </div>
-        <div className="mt-6 text-center">
-            <p className="text-lg font-semibold">
+        <div className="mt-8 text-center">
+            <p className="text-lg font-semibold tracking-wider uppercase" style={{color: isBreak ? 'hsl(var(--secondary))' : 'hsl(var(--primary))'}}>
                 {isBreak ? "Break Time" : "Focus Session"}
             </p>
         </div>

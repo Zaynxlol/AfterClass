@@ -33,9 +33,9 @@ const prompt = ai.definePrompt({
   name: 'generateNotesFromPdfPrompt',
   input: {schema: GenerateNotesFromPdfInputSchema},
   output: {schema: GenerateNotesFromPdfOutputSchema},
-  prompt: `You are an expert note-taker, skilled at extracting the most important information from documents.
+  prompt: `You are an expert note-taker, skilled at extracting the most important information from documents and structuring it professionally.
 
-  Please analyze the provided document and generate clean, formatted notes in Markdown. The notes should summarize the key concepts using headings, bullet points, and bold text for emphasis.
+  Please analyze the provided document and generate clean, formatted notes in Markdown. The notes should summarize the key concepts using clear headings, hierarchical bullet points, and bold text for emphasis, creating a well-organized study document.
 
   Use the following as the source of information:
   {{media url=fileDataUri}}

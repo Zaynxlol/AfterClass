@@ -42,7 +42,7 @@ export function DashboardSidebar() {
     <>
     <SidebarRail />
     <SidebarHeader>
-        <div className={cn("flex items-center gap-2 p-2", { "justify-center": state === 'collapsed' })}>
+        <div className={cn("flex items-center gap-2 p-3", { "justify-center": state === 'collapsed' })}>
             <Logo />
         </div>
     </SidebarHeader>
@@ -54,6 +54,10 @@ export function DashboardSidebar() {
                 asChild
                 isActive={pathname === link.href}
                 tooltip={link.label}
+                className={cn(
+                    "dark:hover:shadow-glow-primary dark:data-[active=true]:shadow-glow-primary transition-shadow",
+                    {"border-l-4 border-primary": pathname === link.href}
+                )}
             >
                 <Link href={link.href}>
                     <link.icon className="h-5 w-5" />

@@ -29,11 +29,11 @@ const prompt = ai.definePrompt({
   name: 'explainSimplyPrompt',
   input: {schema: ExplainSimplyInputSchema},
   output: {schema: ExplainSimplyOutputSchema},
-  prompt: `You are an expert at explaining complex topics in simple terms. A student has asked you to explain the following topic:
+  prompt: `You are an expert academic writer. A student has asked you to explain the following topic. 
+  
+  Provide a comprehensive, well-structured explanation in Markdown format, as if it were a page from a high-quality textbook. Use clear headings, subheadings, bullet points for key details, and bold text for important terms. Ensure the tone is professional, educational, and authoritative.
 
-{{topic}}
-
-Please provide a well-structured explanation in Markdown format. Use headings, subheadings, bullet points, and bold text to organize the information clearly. Your explanation should be clear, concise, and easy to understand.`,
+  Topic: {{{topic}}}`,
 });
 
 const explainSimplyFlow = ai.defineFlow(

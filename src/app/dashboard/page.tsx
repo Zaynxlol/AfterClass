@@ -47,7 +47,7 @@ const modules = [
     description: "Track your learning journey.",
   },
   {
-    href: "#",
+    href: "/dashboard/subjects",
     icon: <BookMarked className="w-8 h-8" />,
     title: "My Subjects",
     description: "Manage your study subjects.",
@@ -56,20 +56,20 @@ const modules = [
 
 export default function Dashboard() {
   return (
-    <div>
-      <div className="mb-6 bg-card p-6 rounded-lg border">
-        <h1 className="text-2xl font-bold tracking-tight font-headline">
+    <div className="animate-fade-in-up">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold tracking-tight font-headline">
           Welcome back, Student!
         </h1>
         <p className="text-muted-foreground">Here's your dashboard overview. Ready to dive in?</p>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {modules.map((mod) => (
+        {modules.map((mod, i) => (
           <Link href={mod.href} key={mod.title}>
-            <Card className="h-full hover:bg-muted/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <Card style={{animationDelay: `${i * 100}ms`}} className="h-full glassmorphism-dark transition-all duration-300 hover:scale-105 hover:shadow-glow-primary animate-fade-in-up">
               <CardHeader>
                 <div className="text-primary mb-4">{mod.icon}</div>
-                <CardTitle className="font-headline">{mod.title}</CardTitle>
+                <CardTitle className="font-headline text-lg">{mod.title}</CardTitle>
                 <CardDescription>{mod.description}</CardDescription>
               </CardHeader>
             </Card>

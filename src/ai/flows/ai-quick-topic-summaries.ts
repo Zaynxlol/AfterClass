@@ -28,9 +28,11 @@ const summarizeTopicPrompt = ai.definePrompt({
   name: 'summarizeTopicPrompt',
   input: {schema: SummarizeTopicInputSchema},
   output: {schema: SummarizeTopicOutputSchema},
-  prompt: `Summarize the following topic for a student who needs a quick revision. The summary should be well-structured, using bullet points for key information and bold text to highlight important terms. Present the output in Markdown format.
+  prompt: `You are an expert at creating concise and effective study materials. A student needs a quick revision summary of the following topic.
 
-Topic: {{{topic}}}`,
+  Generate a summary that is well-structured, using bullet points for key information and bold text to highlight important terms. The output must be in clear, professional Markdown format, like a page from a revision guide.
+
+  Topic: {{{topic}}}`,
 });
 
 const summarizeTopicFlow = ai.defineFlow(

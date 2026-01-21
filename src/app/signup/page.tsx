@@ -14,8 +14,8 @@ import { Logo } from "@/components/logo"
 
 export default function SignupPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-secondary">
-      <Card className="mx-auto max-w-sm">
+    <div className="flex items-center justify-center min-h-screen bg-background p-4">
+      <Card className="mx-auto max-w-sm w-full glassmorphism-dark animate-fade-in-up">
         <CardHeader className="space-y-4">
           <div className="flex justify-center">
             <Link href="/" prefetch={false}><Logo /></Link>

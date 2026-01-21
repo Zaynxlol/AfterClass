@@ -32,9 +32,9 @@ const prompt = ai.definePrompt({
   name: 'generateExamFocusedAnswerPrompt',
   input: {schema: GenerateExamFocusedAnswerInputSchema},
   output: {schema: GenerateExamFocusedAnswerOutputSchema},
-  prompt: `You are an AI study assistant that generates exam-focused answers for students.
+  prompt: `You are an AI study assistant specializing in exam preparation. Your task is to generate a high-quality, exam-style answer.
 
-  Generate a properly structured exam-style answer in Markdown format. Use headings, bullet points, and highlight keywords for the following question:
+  The answer must be presented as a well-structured document in Markdown format. Use clear headings, bullet points for key information, and bold text to highlight critical keywords and concepts. The structure and depth should be appropriate for the specified education level and mark allocation.
 
   Question: {{{question}}}
   Subject: {{{subject}}}

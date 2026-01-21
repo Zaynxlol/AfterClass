@@ -34,15 +34,14 @@ const generateExamStyleAnswerPrompt = ai.definePrompt({
   name: 'generateExamStyleAnswerPrompt',
   input: {schema: GenerateExamStyleAnswerInputSchema},
   output: {schema: GenerateExamStyleAnswerOutputSchema},
-  prompt: `You are an expert in {{subject}} and will generate an exam-style answer to the following question.
+  prompt: `You are an expert in {{subject}} and will generate a model exam-style answer to the following question.
 
 Question: {{question}}
 Subject: {{subject}}
 Education Level: {{educationLevel}}
 Marks: {{marks}}
 
-Your answer should be in Markdown format, properly structured, use headings and bullet points where appropriate, and highlight keywords using bold or italics.
-Focus on providing a clear, concise, and exam-focused answer that is appropriate for the education level and mark allocation.`,
+Your answer must be in a well-structured Markdown format. Use headings, subheadings, and bullet points where appropriate to create a clear, organized document. Highlight critical keywords and concepts using bold or italics. Focus on providing a clear, concise, and exam-focused answer that is appropriate for the education level and mark allocation. The tone should be formal and academic.`,
 });
 
 const generateExamStyleAnswerFlow = ai.defineFlow(
