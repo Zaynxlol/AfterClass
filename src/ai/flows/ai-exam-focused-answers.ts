@@ -34,7 +34,7 @@ const prompt = ai.definePrompt({
   output: {schema: GenerateExamFocusedAnswerOutputSchema},
   prompt: `You are an AI study assistant that generates exam-focused answers for students.
 
-  Generate a properly structured exam-style answer with headings, bullet points, and keywords highlighted for the following question:
+  Generate a properly structured exam-style answer in Markdown format. Use headings, bullet points, and highlight keywords for the following question:
 
   Question: {{{question}}}
   Subject: {{{subject}}}

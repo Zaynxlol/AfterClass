@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { generateNotesFromFileAction, generateNotesFromTextAction } from '@/lib/actions';
-import { FileUp, Loader2, Sparkles, Notebook } from 'lucide-react';
+import { FileUp, Loader2, Sparkles, Notebook, Download } from 'lucide-react';
+import { jsPDF } from 'jspdf';
 
 const savedNotes = [
     { id: 1, title: 'Introduction to Photosynthesis', subject: 'Biology', date: '2024-05-20', content: 'Photosynthesis is the process used by plants...' },
@@ -22,6 +23,14 @@ export function NotesSection() {
     const [generatedFileNote, setGeneratedFileNote] = useState('');
     const [isFileLoading, setIsFileLoading] = useState(false);
     const [fileName, setFileName] = useState('');
+
+    const handleDownload = (content: string, title: string) => {
+        if (!content) return;
+        const doc = new jsPDF();
+        const splitContent = doc.splitTextToSize(content, 180);
+        doc.text(splitContent, 15, 20);
+        doc.save(`${title.replace(/[^a-z0-9]/gi, '_').toLowerCase() || 'notes'}.pdf`);
+    };
 
     const handleTextGenerate = async () => {
         if (!topic) return;
@@ -108,8 +117,20 @@ export function NotesSection() {
                         </CardContent>
                     </Card>
                     <Card>
-                        <CardHeader>
-                            <CardTitle className="font-headline">Generated Notes</CardTitle>
+                        <CardHeader className="flex flex-row items-center justify-between">
+                            <div className="space-y-1.5">
+                                <CardTitle className="font-headline">Generated Notes</CardTitle>
+                                <CardDescription>Notes generated from your topic.</CardDescription>
+                            </div>
+                            <Button 
+                                variant="outline" 
+                                size="sm" 
+                                onClick={() => handleDownload(generatedTextNote, topic)} 
+                                disabled={!generatedTextNote || isTextLoading}
+                            >
+                                <Download className="mr-2 h-4 w-4" />
+                                Download
+                            </Button>
                         </CardHeader>
                         <CardContent className="min-h-[200px]">
                             {isTextLoading ? <div className="flex justify-center items-center h-full"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div> : 
@@ -141,8 +162,20 @@ export function NotesSection() {
                         </CardContent>
                     </Card>
                     <Card>
-                         <CardHeader>
-                            <CardTitle className="font-headline">Extracted Notes</CardTitle>
+                         <CardHeader className="flex flex-row items-center justify-between">
+                            <div className="space-y-1.5">
+                                <CardTitle className="font-headline">Extracted Notes</CardTitle>
+                                <CardDescription>Notes extracted from your file.</CardDescription>
+                            </div>
+                            <Button 
+                                variant="outline" 
+                                size="sm" 
+                                onClick={() => handleDownload(generatedFileNote, fileName)} 
+                                disabled={!generatedFileNote || isFileLoading}
+                            >
+                                <Download className="mr-2 h-4 w-4" />
+                                Download
+                            </Button>
                         </CardHeader>
                         <CardContent className="min-h-[200px]">
                             {isFileLoading ? <div className="flex justify-center items-center h-full"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div> : 

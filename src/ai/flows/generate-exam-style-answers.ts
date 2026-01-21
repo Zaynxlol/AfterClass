@@ -41,7 +41,7 @@ Subject: {{subject}}
 Education Level: {{educationLevel}}
 Marks: {{marks}}
 
-Your answer should be properly structured, use headings and bullet points where appropriate, and highlight keywords.
+Your answer should be in Markdown format, properly structured, use headings and bullet points where appropriate, and highlight keywords using bold or italics.
 Focus on providing a clear, concise, and exam-focused answer that is appropriate for the education level and mark allocation.`,
 });
 
