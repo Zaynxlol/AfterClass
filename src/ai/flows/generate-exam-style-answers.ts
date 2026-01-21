@@ -41,7 +41,7 @@ Subject: {{subject}}
 Education Level: {{educationLevel}}
 Marks: {{marks}}
 
-Your answer must be in a well-structured Markdown format. Use headings, subheadings, and bullet points where appropriate to create a clear, organized document. Highlight critical keywords and concepts using bold or italics. Focus on providing a clear, concise, and exam-focused answer that is appropriate for the education level and mark allocation. The tone should be formal and academic.`,
+Your answer must be in a well-structured Markdown format, like a formal document. Use a main title, headings, subheadings, and bullet points where appropriate to create a clear, organized document. Highlight critical keywords and concepts using bold or italics. Focus on providing a clear, concise, and exam-focused answer that is appropriate for the education level and mark allocation. The tone should be formal and academic.`,
 });
 
 const generateExamStyleAnswerFlow = ai.defineFlow(

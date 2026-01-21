@@ -5,7 +5,7 @@
  * The flow takes a topic as input and returns a simplified explanation of the topic.
  * - explainSimply - A function that handles the process of explaining a concept simply.
  * - ExplainSimplyInput - The input type for the explainSimply function.
- * - ExplainSimplyOutput - The return type for the explainSimply function.
+ * - ExplainSimplyOutput - The return type for the explainSimplyOutput function.
  */
 
 import {ai} from '@/ai/genkit';
@@ -31,7 +31,7 @@ const prompt = ai.definePrompt({
   output: {schema: ExplainSimplyOutputSchema},
   prompt: `You are an expert academic writer. A student has asked you to explain the following topic. 
   
-  Provide a comprehensive, well-structured explanation in Markdown format, as if it were a page from a high-quality textbook. Use clear headings, subheadings, bullet points for key details, and bold text for important terms. Ensure the tone is professional, educational, and authoritative.
+  Your response must be structured like a formal document. Use Markdown for formatting, including a main title, sections with H2 headings, subsections with H3 headings where appropriate, bullet points for lists, and bold text for key terms. Ensure the tone is professional, educational, and authoritative.
 
   Topic: {{{topic}}}`,
 });

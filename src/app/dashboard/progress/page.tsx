@@ -1,7 +1,11 @@
+"use client"
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Calendar, Flame, Lightbulb, Star } from "lucide-react";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+
 
 const stats = [
     { icon: <Flame className="w-6 h-6 text-orange-500" />, value: "5 Days", label: "Study Streak" },
@@ -16,6 +20,23 @@ const achievements = [
 ];
 
 const revisionSuggestions = ["Photosynthesis", "Newton's Laws of Motion", "The Cold War"];
+
+const chartData = [
+  { day: "Mon", hours: 2.5 },
+  { day: "Tue", hours: 3 },
+  { day: "Wed", hours: 1.5 },
+  { day: "Thu", hours: 4 },
+  { day: "Fri", hours: 3.5 },
+  { day: "Sat", hours: 5 },
+  { day: "Sun", hours: 2 },
+];
+
+const chartConfig = {
+  hours: {
+    label: "Study Hours",
+    color: "hsl(var(--primary))",
+  },
+};
 
 export default function ProgressPage() {
   return (
@@ -40,6 +61,33 @@ export default function ProgressPage() {
                 </Card>
             ))}
         </div>
+
+        <Card>
+            <CardHeader>
+                <CardTitle className="font-headline">Study Time This Week</CardTitle>
+                <CardDescription>A look at your study hours over the past 7 days.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <ChartContainer config={chartConfig} className="h-[250px] w-full">
+                    <BarChart accessibilityLayer data={chartData} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                        <CartesianGrid vertical={false} />
+                        <XAxis
+                            dataKey="day"
+                            tickLine={false}
+                            tickMargin={10}
+                            axisLine={false}
+                        />
+                        <YAxis tickLine={false} axisLine={false} tickMargin={10} />
+                        <ChartTooltip
+                            cursor={false}
+                            content={<ChartTooltipContent indicator="dot" />}
+                        />
+                        <Bar dataKey="hours" fill="var(--color-hours)" radius={8} />
+                    </BarChart>
+                </ChartContainer>
+            </CardContent>
+        </Card>
+
 
         <Card>
             <CardHeader>

@@ -25,13 +25,13 @@ import {
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/dashboard", icon: Home, label: "Dashboard" },
-  { href: "/dashboard/study", icon: Bot, label: "AI Study Assistant" },
-  { href: "/dashboard/answer-generator", icon: FileText, label: "Answer Generator" },
-  { href: "/dashboard/notes", icon: Notebook, label: "Notes Builder" },
-  { href: "/dashboard/focus", icon: Timer, label: "Focus Mode" },
-  { href: "/dashboard/progress", icon: TrendingUp, label: "Progress" },
-  { href: "/dashboard/subjects", icon: BookMarked, label: "My Subjects" },
+    { href: "/dashboard", icon: Home, label: "Dashboard" },
+    { href: "/dashboard/subjects", icon: BookMarked, label: "My Subjects" },
+    { href: "/dashboard/study", icon: Bot, label: "AI Study Assistant" },
+    { href: "/dashboard/answer-generator", icon: FileText, label: "Answer Sheet Generator" },
+    { href: "/dashboard/notes", icon: Notebook, label: "Notes & PDF Builder" },
+    { href: "/dashboard/focus", icon: Timer, label: "Focus Mode" },
+    { href: "/dashboard/progress", icon: TrendingUp, label: "Progress" },
 ];
 
 export function DashboardSidebar() {
@@ -55,11 +55,12 @@ export function DashboardSidebar() {
                 isActive={pathname === link.href}
                 tooltip={link.label}
                 className={cn(
-                    "dark:hover:shadow-glow-primary dark:data-[active=true]:shadow-glow-primary transition-shadow",
-                    {"border-l-4 border-primary": pathname === link.href}
+                    "dark:hover:shadow-glow-primary dark:data-[active=true]:shadow-glow-primary transition-shadow relative",
+                    {"data-[active=true]:bg-primary/10": pathname === link.href}
                 )}
             >
                 <Link href={link.href}>
+                    {pathname === link.href && <span className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 bg-primary rounded-r-full"></span>}
                     <link.icon className="h-5 w-5" />
                     <span>{link.label}</span>
                 </Link>
@@ -71,8 +72,8 @@ export function DashboardSidebar() {
     <SidebarFooter>
         <SidebarMenu>
             <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="Settings">
-                    <Link href="#">
+                <SidebarMenuButton asChild tooltip="Settings" isActive={pathname === '/dashboard/settings'}>
+                    <Link href="/dashboard/settings">
                         <Settings className="h-5 w-5" />
                         <span>Settings</span>
                     </Link>
