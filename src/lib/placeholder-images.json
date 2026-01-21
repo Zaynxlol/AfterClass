@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-image",
+      "description": "A student studying at a desk with books and a laptop.",
+      "imageUrl": "https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdHVkZW50JTIwc3R1ZHlpbmd8ZW58MHx8fHwxNzY4OTAzODMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "student studying"
+    },
+    {
+      "id": "feature-1",
+      "description": "An abstract representation of an AI brain or neural network.",
+      "imageUrl": "https://images.unsplash.com/photo-1738641928061-e68c5e8e2f2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxBSSUyMGxlYXJuaW5nfGVufDB8fHx8MTc2ODg4MjQwOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "AI learning"
+    },
+    {
+      "id": "feature-2",
+      "description": "A close-up of a person writing notes in a notebook.",
+      "imageUrl": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx0YWtpbmclMjBub3Rlc3xlbnwwfHx8fDE3Njg5ODM2OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "taking notes"
+    },
+    {
+      "id": "feature-3",
+      "description": "A minimalist shot of a timer or clock, representing focus.",
+      "imageUrl": "https://images.unsplash.com/photo-1670105751017-99567a886016?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmb2N1cyUyMHRpbWV8ZW58MHx8fHwxNzY4OTgzNjk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "focus time"
+    }
+  ]
 }
